@@ -53,7 +53,7 @@ page-home {
     .kidsVid {
       img {
         //height: 4em;
-        height: 80px; //    height: 90% !important;
+        height: 8rem; //    height: 90% !important;
         width: 100%;
         border: 1px solid #f1e9e9;
         border-radius: 5px;
@@ -85,9 +85,14 @@ page-home {
     right: 30px !important;
     .openButton {
       background-color: #ff6f18;
+      width: 5rem;
+      height: 5rem;
       ion-icon {
         font-size: 4.5rem;
       }
+    }
+    .activated{
+          background-color: #e66314 !important;
     }
     ion-fab-list {
       button {

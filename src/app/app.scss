@@ -14,34 +14,35 @@
 // automatically applied to the <body> element in the app.
 
 /* Global style */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  padding: 0px;
-  margin: 0px;
+@font-face {
+  font-family: "Montserratbold";
+  src: url('../assets/fonts/Montserrat/Montserrat-Bold.otf') format("opentype");
 }
 
 @font-face {
-  font-family: "Montserratbold";
-  src: url('../assets/fonts/Montserrat/Montserrat-Bold.eot');
-  src: url('../assets/fonts/Montserrat/Montserrat-Bold.woff') format('woff'), url('../assets//fonts/Montserrat/Montserrat-Bold.ttf') format('truetype'), url('../assets//fonts/Montserrat/Montserrat-Bold.svg#svgFontName') format('svg');
+  font-family: "Montserratsemibold";
+  src: url('../assets/fonts/Montserrat/MontserratAlternates-SemiBold.otf') format("opentype");
 }
 
 @font-face {
   font-family: "MontserratRegular";
-  src: url('../assets//fonts/Montserrat/Montserrat-Regular.eot');
-  src: url('../assets//fonts/Montserrat/Montserrat-Regular.woff') format('woff'), url('../assets//fonts/Montserrat/Montserrat-Regular.ttf') format('truetype'), url('../assets//fonts/Montserrat/Montserrat-Regular.svg#svgFontName') format('svg');
+  src: url('../assets/fonts/Montserrat/Montserrat-Regular.otf') format("opentype");
 }
 
 @font-face {
   font-family: "MontserratLight";
-  src: url('../assets//fonts/Montserrat/Montserrat-Light.eot');
-  src: url('../assets//fonts/Montserrat/Montserrat-Light.woff') format('woff'), url('../assets//fonts/Montserrat/Montserrat-Light.ttf') format('truetype'), url('../assets//fonts/Montserrat/Montserrat-Light.svg#svgFontName') format('svg');
+  src: url('../assets/fonts/MontserratMontserrat-Light.otf') format("opentype");  
+}
+
+@font-face {
+  font-family: "MontserratextraLight";
+  src: url('../assets/fonts/MontserratAlternates-ExtraLight.otf') format("opentype");  
+}
+
+h1,h2,h3,h4,h5,h6,p {
+  font-family: "MontserratRegular" !important;
+  padding: 0px;
+  margin: 0px;
 }
 
 body {
@@ -54,14 +55,26 @@ body {
 
 //Navbar Global Style
 .header {
-  .toolbar-background {
-    border-width: inherit !important;
-    // background-color: #ff6f18;
-    background-color:#ff6318
+  .toolbar {
+    .toolbar-background {
+      border-width: inherit !important;
+      background-color: #ff6f18;
+    }
+    .toolbar-title {
+      color: #fff;
+      font-family: MontserratRegular;
+    }
+
+    button{
+      img{
+        width: 2.5rem;
+      }
+    }
   }
-  .toolbar-title {
-    color: #fff;
-  }
+  
+}
+.button-inner{
+      font-family: MontserratRegular;
 }
 
 //Global Form & Buttons Style
@@ -69,16 +82,16 @@ body {
   justify-content: center;
   align-items: center;
   button {
-    padding-left: 5rem;
-    padding-right: 5rem;
-    height: 2.5em;
+    padding-left: 6rem;
+    padding-right: 6rem;
+    height: 5rem;
     background-color: #4bcf18;
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.4);
   }
   .activated {
     background-color: #49c31a;
   }
 }
-
 
 /*Menu Style*/
 
@@ -123,3 +136,40 @@ body {
   border: none;
   box-shadow: none;
 }
+
+
+
+//alert style
+.addfoodClass{
+      align-items: center !important;
+      padding: 0 !important;
+      ion-backdrop{
+        opacity: 0.8 !important;
+      }
+      .alert-wrapper{
+        border-radius: 5px;
+        min-width: 30rem;
+        .alert-head{
+          text-align: left;
+          .alert-title{
+              color: #231f20;
+              font-size: 1.2rem;
+          }
+        }
+        .alert-message{
+          display: none;
+        }
+
+        .alert-button-group{
+            .deletebtn{
+                background:   #e0e0e0; ;
+                color: #484646;
+            }
+            .savebtn{
+                background:#4bcf18;
+                color: #fff;
+            }
+        }
+    }
+        
+  }

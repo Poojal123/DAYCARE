@@ -1,0 +1,68 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left> 
+      <button ion-button clear menuToggle>
+        <img src="assets/images/menu.png" alt="">
+      </button>
+    </ion-buttons>
+    <ion-title>Food List</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <h2>2 Dishesh Available</h2>
+
+    <button ion-button item-end clear (click)='addFood()'>
+      Add
+      </button>
+  </ion-item>
+
+  <ion-list>
+    <!--{{food}}-->
+    <ion-item *ngFor="let food of foodlist | kyes1">
+      <!--{{food |json}}-->
+      <p>
+        {{food.food}}
+      </p>
+      <button ion-button item-end clear (click)='editFood(food)'>
+        <img src="assets/images/edit.png" alt="">
+      </button>
+    </ion-item>
+
+    <!--<ion-item>
+      <p>
+        Food Name 2
+      </p>
+      <button ion-button item-end clear (click)='editFood()'>
+        <img src="assets/images/edit.png" alt="">
+      </button>
+    </ion-item>
+
+    <ion-item>
+      <p>
+        Food Name 3
+      </p>
+      <button ion-button item-end clear (click)='editFood()'>
+        <img src="assets/images/edit.png" alt="">
+      </button>
+    </ion-item>-->
+  </ion-list>
+  
+  <ion-grid hidden>
+    <ion-row>
+      <img src="assets/images/napkin.png" alt="">
+
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+    </ion-row>
+    <ion-row class="buttons">
+      <button ion-button round>
+        Add Food
+      </button>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -14,3 +14,6 @@ import { WeeklymenuPage } from './weeklymenu';
   ]
 })
 export class WeeklymenuPageModule {}
+
+
+

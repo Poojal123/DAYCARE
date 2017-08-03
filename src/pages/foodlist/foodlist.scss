@@ -1,0 +1,50 @@
+page-foodlist {
+
+    ion-content{
+        .scroll-content{
+            padding: 0 !important;
+
+            .item{
+                .item-inner{
+                    .label {
+                        h2{
+                         font-size: 1.5rem;
+                         color:rgba(35, 31, 32, 0.87);   
+                        }
+                        p{
+                            font-size: 1.3rem;
+                            color:rgba(35, 31, 32, 0.87);  
+                        }
+                    }
+                    .button-inner{
+                        color: #004caa;
+
+                        img{
+                            height: 2rem;
+                        }
+                    }
+                }
+            }
+            
+            .item-block:last-child{
+                border: none;
+            }
+
+            .grid{
+                .row{
+                    text-align: center;
+
+                    img{
+                        margin: 8rem auto 1rem;
+                        height: 14rem;
+                    }
+                    p{
+                        margin-bottom: 6rem;
+                        color:  #7f838a;
+                        font-size: 1.3rem;  
+                    }
+                }
+            }
+        }
+    }
+}

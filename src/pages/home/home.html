@@ -1,10 +1,10 @@
 <ion-header>
   <ion-navbar>
-    <!--<ion-buttons>-->
-    <button ion-button menuToggle icon-only> 
-        <ion-icon ios="ios-menu" md="md-menu"></ion-icon>
+    <ion-buttons left>
+      <button ion-button clear menuToggle>
+        <img src="assets/images/menu.png" alt="">
       </button>
-    <!--</ion-buttons>-->
+    </ion-buttons>
 
     <ion-title>Home</ion-title>
   </ion-navbar>
@@ -46,99 +46,99 @@
                         <img [src]="kidPic.profilePic">
                     </ion-col>-->
 
-                    <!--<div *ngIf="childDataList">-->
-                      <!--hjdfjhf {{childDataList}}-->
-                      <ion-col *ngIf="childDataList == ''">No data</ion-col>
-                    <ion-col col-4 *ngFor="let kidPic of childDataList | slice:0:3 let i = index">
-                        <!--{{kidPic.value.videos}}-->
-                       <img *ngIf="i<3" src="{{domainUrl+kidPic.value.profile_pic}}">
-                    </ion-col>
-                    <!--</div>-->
-                </ion-row>
-            </ion-grid>
-        </ion-card-content>
+            <!--<div *ngIf="childDataList">-->
+            <!--hjdfjhf {{childDataList}}-->
+            <ion-col *ngIf="childDataList == ''">No data</ion-col>
+            <ion-col col-4 *ngFor="let kidPic of childDataList | slice:0:3 let i = index">
+              <!--{{kidPic.value.videos}}-->
+              <img *ngIf="i<3" src="{{domainUrl+kidPic.value.profile_pic}}">
+            </ion-col>
+            <!--</div>-->
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
 
     </ion-card>
 
     <ion-card class="kidsVid">
 
-        <ion-card-header>
-            Kids Videos
-            <a (click)="goToPage('KidsVideosPage')">view all...</a>
-        </ion-card-header>
+      <ion-card-header>
+        Kids Videos
+        <a (click)="goToPage('KidsVideosPage')">view all...</a>
+      </ion-card-header>
 
-        <ion-card-content>
-            <ion-grid>
-                <ion-row>
-                   <ion-col *ngIf="childDataList == ''">No data</ion-col>
-                    <!--<div  col-4 *ngIf="kidPic.value.videos">-->
-                     <ion-col  *ngFor="let kidPic of childDataList | slice:0:3  let i = index" col-4>
-                        <!--{{kidPic.value.videos}}-->
-                         <img  src="{{domainUrl+kidPic.value.profile_pic}}">
-                    </ion-col>
-                    <!--</div>-->
-                </ion-row>
-            </ion-grid>
-        </ion-card-content>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col *ngIf="childDataList == ''">No data</ion-col>
+            <!--<div  col-4 *ngIf="kidPic.value.videos">-->
+            <ion-col *ngFor="let kidPic of childDataList | slice:0:3  let i = index" col-4>
+              <!--{{kidPic.value.videos}}-->
+              <img src="{{domainUrl+kidPic.value.profile_pic}}">
+            </ion-col>
+            <!--</div>-->
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
     </ion-card>
 
-     <ion-card class="annouce">
-        <ion-card-header>
-            Announcements
-            <a (click)="goToPage('AnnouncementPage')">view all...</a>
-        </ion-card-header>
-        <!--<div *ngFor="let announcement of loadedChildList">-->
-            <!--{{announcement.value |json}}-->
-            <ion-card-content *ngIf="loadedChildList == ''">No data</ion-card-content>
-        <ion-card-content *ngFor="let announcement1 of loadedChildList | ReverseHomeVideos">
-            <!--{{announcement1 |json}}-->
-            <ion-grid>
-                <ion-row>
-                    <h6>{{announcement1.date}}</h6>
-                </ion-row>
-                <ion-row>
-                    <h5>{{announcement1.title}}</h5>
-                </ion-row>
-                <ion-row>
-                    <p>
-                    {{announcement1.description}}
-                    </p>
-                </ion-row>
-            </ion-grid>
-        </ion-card-content>
-        <!--</div>-->
+    <ion-card class="annouce">
+      <ion-card-header>
+        Announcements
+        <a (click)="goToPage('AnnouncementPage')">view all...</a>
+      </ion-card-header>
+      <!--<div *ngFor="let announcement of loadedChildList">-->
+      <!--{{announcement.value |json}}-->
+      <ion-card-content *ngIf="loadedChildList == ''">No data</ion-card-content>
+      <ion-card-content *ngFor="let announcement1 of loadedChildList | ReverseHomeVideos">
+        <!--{{announcement1 |json}}-->
+        <ion-grid>
+          <ion-row>
+            <h6>{{announcement1.date}}</h6>
+          </ion-row>
+          <ion-row>
+            <h5>{{announcement1.title}}</h5>
+          </ion-row>
+          <ion-row>
+            <p>
+              {{announcement1.description}}
+            </p>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+      <!--</div>-->
 
     </ion-card>
   </div>
- 
-      
-   <div *ngIf="!daycare">
-            <ion-card class="kidsPic">
-        <ion-card-header >
-            Kids Photos
-            <!--<a (click)="goToPage('KidsPhotosPage')">view all...</a>-->
-            <a (click)="goToPage('KidsPhotosPage')" *ngIf="childDataList !='' ">view all...</a>
-        </ion-card-header>
 
-        <ion-card-content>
-            <ion-grid>
-                <ion-row>
-                   <ion-col col-12 *ngIf="childDataList =='' ">No Photos</ion-col>
-                    <ion-col col-4 *ngFor="let kidPic of childDataList | slice:0:3 let i = index">
-                        <!--{{kidPic.value.videos}}-->
-                       <img  src="{{domainUrl+kidPic.value.profile_pic}}">
-                    </ion-col>
-                    <!--</div>-->
-                </ion-row>
-            </ion-grid>
-        </ion-card-content>
+
+  <div *ngIf="!daycare">
+    <ion-card class="kidsPic">
+      <ion-card-header>
+        Kids Photos
+        <!--<a (click)="goToPage('KidsPhotosPage')">view all...</a>-->
+        <a (click)="goToPage('KidsPhotosPage')" *ngIf="childDataList !='' ">view all...</a>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-12 *ngIf="childDataList =='' ">No Photos</ion-col>
+            <ion-col col-4 *ngFor="let kidPic of childDataList | slice:0:3 let i = index">
+              <!--{{kidPic.value.videos}}-->
+              <img src="{{domainUrl+kidPic.value.profile_pic}}">
+            </ion-col>
+            <!--</div>-->
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
 
     </ion-card>
 
     <ion-card class="kidsVid">
       <ion-card-header>
         Kids Videos
-        <a (click)="goToPage('KidsVideosPage')"  *ngIf="childDataList !='' ">view all...</a>
+        <a (click)="goToPage('KidsVideosPage')" *ngIf="childDataList !='' ">view all...</a>
       </ion-card-header>
 
       <ion-card-content>
@@ -158,8 +158,8 @@
   </div>
   <ion-fab right bottom *ngIf="daycare">
     <button ion-fab color="confirm" class="openButton">
-            <ion-icon ios="ios-add" md="md-add"  icon-only></ion-icon>
-        </button>
+        <ion-icon ios="ios-add" md="md-add"  icon-only></ion-icon>
+    </button>
 
     <ion-fab-list side="left">
       <button ion-fab (click)="goToPage('SendAnnoncementPage')"> <ion-icon ios="ios-megaphone" md="md-megaphone" ></ion-icon></button>

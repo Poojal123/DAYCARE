@@ -5,7 +5,7 @@ import * as firebase from 'firebase';
 import { Observable } from 'rxjs/Rx';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Transfer,TransferObject,FileUploadOptions } from '@ionic-native/transfer';
-import {Toast} from '@ionic-native/toast'
+import { Toast } from '@ionic-native/toast'
 import { MediaCapture } from '@ionic-native/media-capture';
 
 
@@ -15,6 +15,7 @@ export class AuthProvider {
   public databaseChildren ='/childrenData'
   public databaseDaycare ='/userData'
   public databaseWeeklymenu='/weeklyMenu'
+  public databaseFood = '/foodData'
 countryList=[]
 childList =[]
   base64textString
@@ -68,6 +69,7 @@ childList =[]
           });
         });
       }
+     
       getProfile(){
         let formData = new URLSearchParams();
         formData.append("uid",firebase.auth().currentUser.uid);
@@ -441,11 +443,38 @@ childList =[]
       
     }
     saveWeeklyMenu(data):Promise<any>{
-      return new Promise((resolve=>{
+      return new Promise((resolve)=>{
          firebase.database().ref(this.databaseWeeklymenu).push({daycare_id:firebase.auth().currentUser.uid,"day":data.day});
-      }))
+      })
      
     }
+    getFoodData(){
+       return  new Promise((resolve)=>{
+            firebase.database().ref(this.databaseFood)
+              .on('value', data => {
+                 resolve(data.val());
+                // resolve({data:data.val(),num:data.numChildren()});
+              });
+
+        })
+    }
+     saveFood(data){
+          return new Promise((resolve)=>{
+            let date = this.getdate()
+            // alert(this.databaseFood+'/'+data)
+            // firebase.database().ref(this.databaseFood).once('value', function(snapshot) {
+            //     if (!snapshot.hasChild("food")) {
+                   firebase.database().ref(this.databaseFood).push({daycare_id:firebase.auth().currentUser.uid,"food":data,date:date});
+                   
+            //     }
+            //     else {
+            //       alert("already exits")
+            //         this.toast.show("Food already exists.","long","bottom")
+            //     }
+            // });
+              
+          })
+      }
     publishAnnouncement(data12):Promise<any>{
         return new Promise((resolve) =>{
               firebase.database().ref(this.databaseChildren)

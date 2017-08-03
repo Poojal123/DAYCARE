@@ -1,44 +1,91 @@
 page-weeklymenu {
-    .selectday,
-    .breakfast {
-        width: 100%;
-        .item-block:last-child {
-            border: 0;
+    ion-header{
+        .toolbar{
+            box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
         }
-        .button-inner {
-            border: 1px solid #ededed !important;
-            border-radius: 25px;
-        }
-        h5 {
-            padding-left: 25px;
-            margin-bottom: 5px;
-            color: #5e5c5c;
-            font-size: inherit;
-        }
-        .input-wrapper {
-            padding: 0 10px !important;
-        }
-        ion-label {
-            font-size: 15px;
-            color: #abaaaa;
+
+        .grid{
+            box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.15);
+
+            .dateHead{
+                .col{
+                    padding-left: 1.8em;
+                    padding-bottom:0px; 
+                    p{
+                        color:  rgba(35, 31, 32, 0.87);
+                    }
+                }
+            }
+            .dateinput{
+                .col{
+                    padding-top:0px;
+
+                    .item{
+                        padding: 0px;
+                        border: 1px solid #c1c1c1;
+                        border-radius: 50px;
+                        height: 4rem;
+                        .item-inner{
+                            border: none;
+                            
+                            .datetime-text.datetime-placeholder {
+                                font-size: 11px;
+                            }
+                            img{
+                                height: 2rem;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
-    .breakfast {
-        width: 100%;
-        .input-item {
-            padding: 0 0 0 10px;
-            border: 1px solid #ededed !important;
-            border-radius: 5px;
+    ion-content{
+        background-color: #f2f2f2 !important;
+
+        .grid{
+            .row{
+                .menuDate{
+                    background: none;
+                    .item-inner{
+                        border: none;
+                        p{
+                            color:  rgba(35, 31, 32, 0.87);
+                        }
+                        img{
+                            height: 0.8rem;
+                        }
+                        button{
+                            .button-inner{
+                                color: #004caa
+                            }
+                        }
+                    }
+                }
+
+                .card{
+                    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.15);
+                    margin: 0;
+                    width: 100%;
+                    .item{
+                        border-bottom: 1px solid #e3e3e3;
+                    }
+                }
+            }
         }
-        .input-wrapper {
-            padding: 0 !important;
+
+        .addweekMenu{
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+
+            button{
+
+                .icon{
+                    font-size: 5rem;
+                }
+            }
         }
-        .textarea {
-            color: #a0a0a0;
-        }
-    }
-    .button-round {
-        padding-right: 4.6rem;
-        padding-left: 4.6rem;
+        
     }
 }

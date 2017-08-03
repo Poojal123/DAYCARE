@@ -1,18 +1,32 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-buttons start>
-      <button ion-button menuToggle icon-only> 
-        <ion-icon ios="ios-menu" md="md-menu"></ion-icon>
-      </button>
-    </ion-buttons>
+    <ion-buttons left>
+        <button ion-button clear menuToggle>
+          <img src="assets/images/menu.png" alt="">
+        </button>
+      </ion-buttons>
 
     <ion-title>Subscription</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <img src="assets/images/childpic.png" alt="">
 
+      <h1>$ 10</h1>
+
+      <h6>Lorem Ipsum is simply dummy text of the printing and typesetting industry</h6>
+
+      <p>Validity : <span>84 Days</span></p>
+    </ion-row>
+    <ion-row class="buttons">
+      <button ion-button round>
+        Subscribe
+      </button>
+    </ion-row>
+  </ion-grid>
 </ion-content>

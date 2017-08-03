@@ -26,9 +26,10 @@ export class KidPhotosPage {
     this.getkidData()
   }
   searchData(){
+    // alert("hiiii");
     // console.log(this.navParams.get("childDataList"))
-      let data = this.navParams.get("childDataList")
-    console.log(this.startdate + "dgdg "+ this.enddate)
+      let data = this.navParams.get("childDataList");
+  //  alert(this.startdate + "dgdg "+ this.enddate)
      this.child = firebase.database().ref(this.auth.databaseChildren+'/'+this.navParams.get("uid")+'/'+'photos').orderByChild("date").startAt(this.startdate)
             .endAt(this.enddate).on("value",(data)=>{
               console.log(data.val())

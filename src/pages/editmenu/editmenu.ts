@@ -3,20 +3,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-weeklymenu',
-  templateUrl: 'weeklymenu.html',
+  selector: 'page-editmenu',
+  templateUrl: 'editmenu.html',
 })
-export class WeeklymenuPage {
-
+export class EditmenuPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-editmenu(){
-
-  this.navCtrl.push("EditmenuPage")
-}
-addlunch(){
-  this.navCtrl.push("AddweeklymenuPage")
-}
 }

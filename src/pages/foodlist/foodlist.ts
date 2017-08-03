@@ -1,0 +1,117 @@
+import { Component, Pipe, PipeTransform } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { AuthProvider } from "../../providers/auth/auth"
+import { Toast } from "@ionic-native/toast"
+@IonicPage()
+@Component({
+  selector: 'page-foodlist',
+  templateUrl: 'foodlist.html',
+})
+
+export class FoodlistPage {
+
+foodlist
+numboffood
+  constructor(public navCtrl: NavController, public toastCtrl:Toast,
+              public navParams: NavParams,public auth:AuthProvider,
+              public alertCtrl: AlertController) {
+  }
+
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad DailyMenuPage');
+    this. getFoodData()
+  }
+  getFoodData(){
+    this.auth.getFoodData().then((res)=>{
+      console.log(this.foodlist)
+
+      this.foodlist = res;
+      
+    }).catch((error)=>{
+        this.toastCtrl.show("There is some problem while fetching. Please try later","long","bottom")
+    })
+  }
+  editFood(food) {
+    let prompt = this.alertCtrl.create({
+      title: `Dish Name`,
+      cssClass:'addfoodClass',
+      inputs: [
+        {
+          placeholder: 'Food Name',
+           value: food.food
+        },
+      ],
+      buttons: [
+        {
+          text: 'Delete',
+          cssClass: 'deletebtn',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Save',
+          cssClass: 'savebtn',
+          handler: data => {
+            console.log('Saved clicked');
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
+
+  
+  addFood(){
+    let prompt = this.alertCtrl.create({
+      title: `Dish Name`,
+      cssClass: 'addfoodClass',
+      inputs: [
+        {
+         name: 'food',
+         placeholder: 'Food name'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Save',
+          cssClass:'savebtn',
+          handler: data => {
+            alert(data.food)
+            this.auth.saveFood(data.food).then((res)=>{
+               
+                this. getFoodData()
+                this.toastCtrl.show("Food added successfully","long","bottom")
+
+              }).catch((error)=>{
+                  alert(error.message)
+                  this.toastCtrl.show("There is problem while saving. Try later.","long","bottom")
+              })
+            console.log('Saved clicked');
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
+}
+@Pipe({ name: 'kyes1',  pure: false })
+export class  kyes1 implements PipeTransform {
+  transform(value: any, args?: any[]): any[] {
+      
+      if(value) {
+        // create instance vars to store keys and final output
+        let keyArr: any[] = Object.keys(value),
+            dataArr = [];
+
+        // loop through the object,
+        // pushing values to the return array
+        keyArr.forEach((key: any) => {
+            dataArr.push(value[key]);
+        });
+        // return the resulting array
+        return dataArr.reverse();
+      }
+    }
+}

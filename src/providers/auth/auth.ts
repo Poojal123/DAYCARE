@@ -452,6 +452,7 @@ childList =[]
        return  new Promise((resolve)=>{
             firebase.database().ref(this.databaseFood)
               .on('value', data => {
+                  data.numChildren()
                  resolve(data.val());
                 // resolve({data:data.val(),num:data.numChildren()});
               });

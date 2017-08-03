@@ -46,7 +46,7 @@
          
             <ion-col col-4 *ngFor="let kidpic of KidPhotos | keysPhotos | slice:0:5 ">
                 
-                <img src="{{domainUrl+kidpic.url}}" imageViewer>
+                <img src="{{domainUrl+kidpic.value.url}}" imageViewer>
             </ion-col>
         </ion-row>
     </ion-grid>
@@ -59,7 +59,7 @@
         <ion-row>
             <ion-col col-4 *ngFor="let kidpic of KidPhotos | keysPhotos |  slice:5">
                 <!--{{KidPhotos|json}}-->
-                <img src="{{domainUrl+kidpic.url}}" imageViewer>
+                <img src="{{domainUrl+kidpic.value.url}}" imageViewer>
             </ion-col>
         </ion-row>
     </ion-grid>

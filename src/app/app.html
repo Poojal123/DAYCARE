@@ -49,24 +49,28 @@
                         Subscription
                         </button>
                     </ion-item>
-                     <ion-item> 
+                     <!--<ion-item> 
                         <button ion-button clear (click)="onLoad('DailyMenuPage')">
                         DailyMenu
                         </button>
-                    </ion-item>
+                    </ion-item>-->
 
-                    <ion-item> 
+                    <ion-item *ngIf="daycare"> 
                         <button ion-button clear (click)="onLoad('FoodlistPage')">
                         Food Menu
                         </button>
                     </ion-item>
 
-                     <ion-item> 
+                     <ion-item *ngIf="daycare"> 
                         <button ion-button clear (click)="onLoad('WeeklymenuPage')">
-                        Weeklymenu
+                        Weekly Menu
                         </button>
                     </ion-item>
-
+                        <ion-item> 
+                            <button ion-button clear (click)="onLoad('WeeklymenyparentPage')">
+                            Weekly Menu
+                            </button>
+                    </ion-item>
                     <!--<ion-item> 
                         <button ion-button clear (click)="onLoad('SettingsPage')">
                         Settings

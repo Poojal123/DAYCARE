@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button clear menuToggle>
+        <img src="assets/images/menu.png" alt="">
+      </button>
+    </ion-buttons>
+
+    <ion-title>Weekly Menu</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-grid>
+    <ion-row *ngFor="let weekData of weeklyData">
+      
+      <ion-item class="menuDate" >
+       
+        <p>
+          <img src="assets/images/bullet.png" alt=""> {{weekData.value.date | date:'dd/MM/yyyy' }} {{weekData.value.day}}
+        </p>
+
+        
+      </ion-item>
+
+      <ion-card >
+        <ion-item>
+          <h6>{{weekData.value.breakfast}}</h6>
+          <p>BreakFast</p>
+        </ion-item>
+        <ion-item>
+          <h6>{{weekData.value.lunch}}</h6>
+          <p>Lunch</p>
+        </ion-item>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>

@@ -17,6 +17,7 @@ export class AuthProvider {
   public databaseWeeklymenu='/weeklyMenu'
   public databaseFood = '/foodData'
 countryList=[]
+ public foodNumber
 childList =[]
   base64textString
   public domainStorageUrl = 'http://daycare.deapps.io:3006/'
@@ -24,7 +25,7 @@ childList =[]
   //  public domainStorageUrl = 'http://192.168.10.189:3000/'
   //  public domainURL = 'http://192.168.10.189:3000/api/';
   constructor(public afDatabase: AngularFireDatabase,public http:Http,public transfer:Transfer,public toast:Toast) {
-    console.log('Hello AuthProvider Provider');
+    // console.log('Hello AuthProvider Provider');
     
    }
 
@@ -130,9 +131,8 @@ childList =[]
       // console.log("helloo sharvari ===> "+SERVER_NAME)
         return new Promise( (resolve, reject) => {
           firebase.database().ref(this.databaseChildren)
-          //  firebase.database().ref(db)
-          .child(uid)
           .on('value', data => {
+
             resolve(data.val());
           });
         });
@@ -154,7 +154,7 @@ childList =[]
           
           countryList.forEach( country => {
                 var duid = country.val().uid_daycare
-                console.log("duid == firebase.auth().currentUser.uid "+ duid == firebase.auth().currentUser.uid)
+                // console.log("duid == firebase.auth().currentUser.uid "+ duid == firebase.auth().currentUser.uid)
                 if(duid == firebase.auth().currentUser.uid){
                   countries.push({id:country.key,value:country.val()});
                 }
@@ -204,10 +204,10 @@ childList =[]
       
       return new Promise((resolve, reject) =>
       {
-        console.log("sdkfhjskjdfh ===> "+imageurils.length)
-        console.log("sdkfhjskjdfh ===> "+imageurils)
+        // console.log("sdkfhjskjdfh ===> "+imageurils.length)
+        // console.log("sdkfhjskjdfh ===> "+imageurils)
           for(var i=0;i<imageurils.length;i++){89            
-            console.log(imageurils[i].images)
+            // console.log(imageurils[i].images)
 
                 var params = {
                           uid:uid_children
@@ -224,10 +224,10 @@ childList =[]
                         fileTransfer.upload(imageurils[i].images, encodeURI(this.domainURL+'uploadChildPhotos'), options1)
                             .then((data1) => {
                               let res = JSON.parse(data1.response); 
-                              console.log('JSON parsed result.response = ' + JSON.stringify(res));
+                              // console.log('JSON parsed result.response = ' + JSON.stringify(res));
                                 // this.toastCtrl.dismissLoadin();
                                 if(data1.response){
-                                     console.log(res.profile_pic);
+                                    //  console.log(res.profile_pic);
                                      var d = new Date();
                                       var month = d.getMonth();
                                        var date = this.getdate();
@@ -259,7 +259,7 @@ childList =[]
       return yyyy+'-'+mm+'-'+dd //dd+'-'+mm+'-'+yyyy;
     }
     uploadVideoDataChild(videourl,uid,description): Promise<any>{
-      console.log(videourl)
+      // console.log(videourl)
       return new Promise((resolve, reject) =>
       {
         var params = {
@@ -277,9 +277,9 @@ childList =[]
             fileTransfer.upload(videourl, encodeURI(this.domainURL+'uploadVideoOfChild'), options1)
                 .then((data1) => {
                   let res = JSON.parse(data1.response); 
-                  console.log('JSON parsed result.response = ' + JSON.stringify(res));
+                  // console.log('JSON parsed result.response = ' + JSON.stringify(res));
                       if(data1.response){
-                          console.log(res.profile_pic);
+                          // console.log(res.profile_pic);
                           var d = new Date();
                           var month = d.getMonth();
 
@@ -301,11 +301,11 @@ childList =[]
     _handleReaderLoaded(readerEvt) {
       var binaryString = readerEvt.target.result;
               this.base64textString= btoa(binaryString);
-              console.log(btoa(binaryString));
+              // console.log(btoa(binaryString));
       }
   
     addChild(data):Promise<any>{
-        console.log("gender : "+data.gender)
+        // console.log("gender : "+data.gender)
         let uid_child       : string  =  new Date().getTime().toString();
         return new Promise((resolve) =>
               {
@@ -333,13 +333,13 @@ childList =[]
             fileTransfer.upload(data.pro_image, encodeURI(this.domainURL+'uploadChild'), options1)
                 .then((data1) => {
                   let res = JSON.parse(data1.response); 
-                  console.log('JSON parsed result.response = ' + JSON.stringify(res));
+                  // console.log('JSON parsed result.response = ' + JSON.stringify(res));
                     // this.toastCtrl.dismissLoadin();
                     if(data1.response){
                         // this.picChange=false;
                         // this.toastCtrl.publishToast("Profile Updated Successfully..");
                         //  alert("updated Successfully")
-                          console.log(res.profile_pic);
+                          // console.log(res.profile_pic);
                           firebase.database().ref(this.databaseChildren).child(uid_child).set({name: data.childname,dob:data.birthday,profile_pic:res.profile_pic,age:data.age, gender:data.gender,uid_parent:data.uid_parent,uid_daycare:firebase.auth().currentUser.uid});
                         resolve(true);
 
@@ -356,7 +356,7 @@ childList =[]
     }
     updateChild(data):Promise<any>{
       return new Promise(resolve=>{
-        console.log(JSON.stringify(data))
+        // console.log(JSON.stringify(data))
           var params = {
                            uid:data.uid_child,
                            name: data.childname,
@@ -381,10 +381,10 @@ childList =[]
                           fileTransfer.upload(data.pro_image, encodeURI(this.domainURL+'uploadChild'), options1)
                               .then((data1) => {
                                 let res = JSON.parse(data1.response); 
-                                console.log('JSON parsed result.response = ' + JSON.stringify(res));
+                                // console.log('JSON parsed result.response = ' + JSON.stringify(res));
                                   // this.toastCtrl.dismissLoadin();
                                   if(data1.response){
-                                      console.log(res.profile_pic);
+                                      // console.log(res.profile_pic);
                                       firebase.database().ref(this.databaseChildren).child(data.uid_child).update({name: data.childname,gender:data.gender,dob:data.birthday,profile_pic:res.profile_pic,age:data.age,uid_daycare:firebase.auth().currentUser.uid});
                                       resolve(true);
 
@@ -442,21 +442,22 @@ childList =[]
             .catch(this.handleError);
       
     }
-    saveWeeklyMenu(data):Promise<any>{
-      return new Promise((resolve)=>{
-         firebase.database().ref(this.databaseWeeklymenu).push({daycare_id:firebase.auth().currentUser.uid,"day":data.day});
-      })
-     
-    }
+    
     getFoodData(){
        return  new Promise((resolve)=>{
+            let food =[]
             firebase.database().ref(this.databaseFood)
               .on('value', data => {
-                  data.numChildren()
-                 resolve(data.val());
-                // resolve({data:data.val(),num:data.numChildren()});
+                    data.forEach( country => {
+                      // console.log(JSON.stringify(country.val()),country.key)
+                        food.push({id:country.key,value:country.val()});
+                 
+                      return false;
+                
+                  });
+                  this.foodNumber = data.numChildren()
               });
-
+                resolve(food);
         })
     }
      saveFood(data){
@@ -465,7 +466,9 @@ childList =[]
             // alert(this.databaseFood+'/'+data)
             // firebase.database().ref(this.databaseFood).once('value', function(snapshot) {
             //     if (!snapshot.hasChild("food")) {
-                   firebase.database().ref(this.databaseFood).push({daycare_id:firebase.auth().currentUser.uid,"food":data,date:date});
+                   firebase.database().ref(this.databaseFood).push({daycare_id:firebase.auth().currentUser.uid,food:data,date:date}).then(res=>{
+                    resolve(true)
+                   })
                    
             //     }
             //     else {
@@ -476,6 +479,37 @@ childList =[]
               
           })
       }
+    saveWeeklyMenu(data):Promise<any>{
+      //  console.log({lunch:data.lunch,breakfast:data.breakfast})
+      //  console.log(" daycare_id :"+firebase.auth().currentUser.uid)
+      return new Promise((resolve)=>{
+        let key = this.getdate()
+       
+         firebase.database().ref(this.databaseWeeklymenu).child(data.date).set({daycare_id:firebase.auth().currentUser.uid,lunch:data.lunch,breakfast:data.breakfast,date:data.date,day:data.day}).then(res=>{
+           resolve(true);
+         });
+         
+      })
+    }
+    getWeeklyMenu(data):Promise<any>{
+      // console.log(data);
+      let food = []
+         return new Promise((resolve)=>{
+         firebase.database().ref(this.databaseWeeklymenu).orderByChild("date").startAt(data.start)
+            .endAt(data.end).on("value",(data)=>{
+            
+                data.forEach( country => {
+                      // console.log(JSON.stringify(country.val()),country.key)
+                        food.push({id:country.key,value:country.val()});
+                 
+                      return false;
+                
+                  });
+             
+            })
+          resolve(food)
+      })
+    }
     publishAnnouncement(data12):Promise<any>{
         return new Promise((resolve) =>{
               firebase.database().ref(this.databaseChildren)
@@ -505,8 +539,8 @@ childList =[]
                   var today :any = dd+'/'+mm+'/'+yyyy;
                   var d1 = new Date(today);
                   var d2 = new Date();
-                  console.log("date "+(d1 == d2))
-                  console.log("this.childList.length " +this.childList.length)
+                  // console.log("date "+(d1 == d2))
+                  // console.log("this.childList.length " +this.childList.length)
                   firebase.database().ref(this.databaseDaycare+'/'+firebase.auth().currentUser.uid+'/'+'announcements').push({title:data12.title,description:data12.description,date:today})
                    for(let i=0;i<this.childList.length ;i++){
                     if(this.childList[i].daycareUid == firebase.auth().currentUser.uid){

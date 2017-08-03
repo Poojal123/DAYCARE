@@ -1,25 +1,20 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth'
+/**
+ * Generated class for the WeeklymenyparentPage page.
+ *
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
+ */
 @IonicPage()
 @Component({
-  selector: 'page-weeklymenu',
-  templateUrl: 'weeklymenu.html',
+  selector: 'page-weeklymenyparent',
+  templateUrl: 'weeklymenyparent.html',
 })
-export class WeeklymenuPage {
+export class WeeklymenyparentPage {
 weeklyData
-
-  constructor(public navCtrl: NavController, public navParams: NavParams,public auth:AuthProvider) {
-  }
-ionViewDidLoad() {
-    console.log('ionViewDidLoad AddweeklymenuPage');
- 
-    // var curr = new Date(); // get current date
-    // var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
-    // var last = first + 6; // last day is the first day + 6
-
-    // var firstday = new Date(curr.setDate(first)).toUTCString();
-    // var lastday = new Date(curr.setDate(first)).getDate()+6;
+  constructor(public navCtrl: NavController, public navParams: NavParams ,public auth:AuthProvider) {
     var dt = new Date("2017-08-09")  //current date of week
     var currentWeekDay = dt.getDay();
     var lessDays = currentWeekDay == 0 ? 6 : currentWeekDay-1
@@ -36,7 +31,7 @@ ionViewDidLoad() {
             mm='0'+mm;
         } 
     
-    let dd1:any = wkEnd.getDate();
+     let dd1:any = wkEnd.getDate();
       let mm1:any = wkEnd.getMonth()+1; //January is 0!
 
         var yyyy1 = wkEnd.getFullYear();
@@ -51,16 +46,13 @@ ionViewDidLoad() {
     this.getData({"start":yyyy+'-'+mm+'-'+dd,"end": yyyy1+'-'+mm1+'-'+dd1})
 
   }
-  editmenu(weekData){
-     this.navCtrl.push("EditmenuPage", {"weekData":weekData});
-    // this.navCtrl.push("",{"data":weekData})
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad WeeklymenyparentPage');
   }
-  getData(data){
+getData(data){
     this.auth.getWeeklyMenu(data).then((res)=>{
          this.weeklyData = res;
       })
   } 
-  addlunch(){
-    this.navCtrl.push("AddweeklymenuPage")
-  }
 }

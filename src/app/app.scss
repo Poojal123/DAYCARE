@@ -161,6 +161,7 @@ body {
         }
 
         .alert-button-group{
+            flex-direction: row;
             .deletebtn{
                 background:   #e0e0e0; ;
                 color: #484646;
@@ -168,6 +169,15 @@ body {
             .savebtn{
                 background:#4bcf18;
                 color: #fff;
+            }
+            .closeBtn{
+                position: absolute;
+                top: 0;
+                right: -11rem;
+                background: url(../assets/images/closealert1.png);
+                background-size: 2rem;
+                background-repeat: no-repeat;
+                background-position: left center;
             }
         }
     }

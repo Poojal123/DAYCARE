@@ -15,7 +15,7 @@
 
 <ion-content padding>
   <ion-item>
-    <h2>2 Dishesh Available</h2>
+    <h2>{{numboffood}} Dishesh Available</h2>
 
     <button ion-button item-end clear (click)='addFood()'>
       Add
@@ -24,10 +24,10 @@
 
   <ion-list>
     <!--{{food}}-->
-    <ion-item *ngFor="let food of foodlist | kyes1">
+    <ion-item *ngFor="let food of foodlist">
       <!--{{food |json}}-->
       <p>
-        {{food.food}}
+        {{food.value.food}}
       </p>
       <button ion-button item-end clear (click)='editFood(food)'>
         <img src="assets/images/edit.png" alt="">

@@ -91,7 +91,7 @@ this.load()
           
       });
       this.childDataList = childData.reverse();
-        // console.log("dfdfg ==> "+JSON.stringify(this.childDataList))
+        console.log("dfdfg ==> "+JSON.stringify(this.childDataList))
    });
  
       // this.loadedChildList=this.childDataList 
@@ -110,6 +110,7 @@ this.load()
         }
       });
       this.childDataList = childData;
+      console.log(this.childDataList)
     //  this.loadedChildList.push(childData.value)
    });
       

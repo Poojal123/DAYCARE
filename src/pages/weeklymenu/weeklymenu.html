@@ -23,7 +23,7 @@
     <ion-row class="dateinput">
       <ion-col col-6>
         <ion-item>
-          <ion-datetime displayFormat="DD-MM-YY" pickerFormat="DD MM YY" placeholder="Select Date"> </ion-datetime>
+          <ion-datetime displayFormat="DD-MM-YY" pickerFormat="DD MM YY"  placeholder="Select Date"> </ion-datetime>
           <img src="assets/images/calendar.png" alt="" item-right>
         </ion-item>
       </ion-col>
@@ -40,24 +40,26 @@
 </ion-header>
 <ion-content padding>
   <ion-grid>
-    <ion-row>
-      <ion-item class="menuDate">
+    <ion-row *ngFor="let weekData of weeklyData">
+      
+      <ion-item class="menuDate" >
+       
         <p>
-          <img src="assets/images/bullet.png" alt=""> 01/08/2017 Tuesday
+          <img src="assets/images/bullet.png" alt=""> {{weekData.value.date | date:'dd/MM/yyyy' }} {{weekData.value.day}}
         </p>
 
-        <button ion-button item-end clear (click)='editmenu()'>
+        <button ion-button item-end clear (click)='editmenu(weekData)'>
         Edit
         </button>
       </ion-item>
 
-      <ion-card>
+      <ion-card >
         <ion-item>
-          <h6>Food Name 1</h6>
+          <h6>{{weekData.value.breakfast}}</h6>
           <p>BreakFast</p>
         </ion-item>
         <ion-item>
-          <h6>Food Name 2</h6>
+          <h6>{{weekData.value.lunch}}</h6>
           <p>Lunch</p>
         </ion-item>
       </ion-card>

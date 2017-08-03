@@ -1,0 +1,91 @@
+page-weeklymenyparent {
+ion-header{
+        .toolbar{
+            box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
+        }
+
+        .grid{
+            box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.15);
+
+            .dateHead{
+                .col{
+                    padding-left: 1.8em;
+                    padding-bottom:0px; 
+                    p{
+                        color:  rgba(35, 31, 32, 0.87);
+                    }
+                }
+            }
+            .dateinput{
+                .col{
+                    padding-top:0px;
+
+                    .item{
+                        padding: 0px;
+                        border: 1px solid #c1c1c1;
+                        border-radius: 50px;
+                        height: 4rem;
+                        .item-inner{
+                            border: none;
+                            
+                            .datetime-text.datetime-placeholder {
+                                font-size: 11px;
+                            }
+                            img{
+                                height: 2rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    ion-content{
+        background-color: #f2f2f2 !important;
+
+        .grid{
+            .row{
+                .menuDate{
+                    background: none;
+                    .item-inner{
+                        border: none;
+                        p{
+                            color:  rgba(35, 31, 32, 0.87);
+                        }
+                        img{
+                            height: 0.8rem;
+                        }
+                        button{
+                            .button-inner{
+                                color: #004caa
+                            }
+                        }
+                    }
+                }
+
+                .card{
+                    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.15);
+                    margin: 0;
+                    width: 100%;
+                    .item{
+                        border-bottom: 1px solid #e3e3e3;
+                    }
+                }
+            }
+        }
+
+        .addweekMenu{
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+
+            button{
+
+                .icon{
+                    font-size: 5rem;
+                }
+            }
+        }
+        
+    }
+}

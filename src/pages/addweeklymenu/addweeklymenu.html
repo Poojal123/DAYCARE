@@ -4,7 +4,7 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<!--<ion-header>
   <ion-navbar>
 
     <ion-buttons left>
@@ -19,15 +19,26 @@
 
 <ion-content padding>
   <ion-grid>
+    <ion-row >
+      <p>last added date : {{DATE}}</p>
+    </ion-row>
+    <div [formGroup]="menu">
     <ion-row>
 
       <ion-item>
-        <ion-datetime displayFormat="DD-MM-YY" pickerFormat="DD MM YY" [(ngModel)]="date" placeholder="Select Date"> </ion-datetime>
+        <ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD MM YYYY" formControlName="date" [(ngModel)]="menuData.date" placeholder="Select Date"> </ion-datetime>
         <ion-icon ios="ios-calendar" md="md-calendar" item-right></ion-icon>
       </ion-item>
     </ion-row>
     <ion-row class="selectMenu">
       <p>Breakfast Dish</p>
+      <ion-item>
+        <ion-label>Name(s)</ion-label>
+        <ion-select [(ngModel)]="menuData.lunch" formControlName="lunch">
+          
+          <ion-option  *ngFor="let food of foodList" [value]= "food.value.food">{{food.value.food}}</ion-option>
+        </ion-select>
+      </ion-item>
       <ion-item>
         <ion-select>
           <ion-option value="food1">Food Name 1</ion-option>
@@ -41,17 +52,68 @@
     <ion-row class="selectMenu">
       <p>Lunch Dish</p>
       <ion-item>
-        <ion-select>
-          <ion-option value="food1">Food Name 1</ion-option>
-          <ion-option value="food2">Food Name 2</ion-option>
-          <ion-option value="food3">Food Name 3</ion-option>
-          <ion-option value="food4">Food Name 4</ion-option>
+        <ion-select formControlName="breakfast"  [(ngModel)]="menuData.breakfast">
+          <ion-option  *ngFor="let food of foodList" [value]= "food.value.food">{{food.value.food}}</ion-option>
         </ion-select>
       </ion-item>
     </ion-row>
+    </div>
     <ion-row justify-content-center>
-      <button ion-button color="secondary" round>Add</button>
+      <button ion-button color="secondary" [disabled]="!menu.valid" (click)="addMenu()" round>Add</button>
     </ion-row>
   </ion-grid>
 
+</ion-content>-->
+
+
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Add Weekly Menu</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+     <div [formGroup]="menu">
+      <ion-row class="dateinput">
+        <p>Date</p>
+        <ion-item>
+          <ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD MM YYYY" formControlName="date" [(ngModel)]="menuData.date" placeholder="Select Date"> </ion-datetime>
+           <img src="assets/images/calendar.png" alt="" item-right>
+        </ion-item>
+      </ion-row>
+
+      <ion-row class="selectMenu">
+        <!--{{foodList | json}}-->
+        <p>Breakfast Dish</p>
+        <ion-item>
+        <ion-select [(ngModel)]="menuData.lunch"  formControlName="lunch">
+            
+            <ion-option  *ngFor="let food of foodList" [value]= "food.value.food">{{food.value.food}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-row>
+
+      <ion-row class="selectMenu">
+        <p>Lunch Dish</p>
+        <ion-item>
+          <ion-select [(ngModel)]="menuData.breakfast" formControlName="breakfast" >
+            
+            <ion-option  *ngFor="let food of foodList" [value]= "food.value.food">{{food.value.food}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-row>
+
+      
+      <ion-row class="buttons">
+        <button ion-button round>
+          Save
+        </button>
+      </ion-row>
+    </div>
+  </ion-grid>
 </ion-content>
